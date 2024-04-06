@@ -50,6 +50,10 @@ func SetSessionTokenCookie(w http.ResponseWriter, token string) {
 	})
 }
 
+func SessionTokenCookieFromRequest(r *http.Request) (*http.Cookie, error) {
+	return r.Cookie(sessionTokenKey)
+}
+
 func DeleteSessionTokenCookie(w http.ResponseWriter) {
 	http.SetCookie(w, &http.Cookie{
 		Name:  sessionTokenKey,
